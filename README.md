@@ -46,3 +46,9 @@ OU
 php bin/console server:start
 php bin/console server:stop
 ```
+
+### Installer Maker Bundle
+
+```shell
+composer require maker --dev
+```
