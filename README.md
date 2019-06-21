@@ -25,3 +25,24 @@ Vérifier si tout est OK sur l'URL public/check.php
 ```shell
 composer remove requirements-checker
 ```
+
+### Installer le serveur interne de PHP
+
+Optionnel, pour ne pas utiliser Apache et avoir des URLs plus courtes.
+
+```shell
+composer require symfony/web-server-bundle --dev
+```
+
+Pour démarrer le serveur
+
+```shell
+php bin/console server:run
+```
+
+OU
+
+```shell
+php bin/console server:start
+php bin/console server:stop
+```
