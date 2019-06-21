@@ -52,3 +52,11 @@ php bin/console server:stop
 ```shell
 composer require maker --dev
 ```
+
+## Doctrine
+
+```shell
+composer require orm
+```
+
+Créer un fichier .env.local et ajouter une ligne pour la variable d'environemment `DATABASE_URL`
