@@ -92,3 +92,17 @@ Exécuter le/les fichier(s) de migration :
 ```shell
 php bin/console doctrine:migrations:migrate
 ```
+
+## Création des fixtures (données de test)
+
+Installation du bundle :
+
+```shell
+composer require --dev orm-fixtures
+```
+
+Création d'un fichier de Fixtures :
+
+```shell
+php bin/console make:fixtures
+```
