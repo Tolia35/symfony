@@ -1,5 +1,24 @@
 # Symfony
 
+Pour installer le projet :
+
+1. Créer le fichier .env.local
+2. Importer les dépendances PHP :
+    ```shell
+    composer install
+    ```
+3. Créer la base de données et insérer les données de test :
+    ```shell
+    php bin/console doctrine:database:drop --force
+    php bin/console doctrine:database:create
+    php bin/console doctrine:migrations:migrate
+    php bin/console doctrine:fixtures:load
+    ```
+4. Démarrer le serveur PHP (optionel) :
+    ```shell
+    php bin/console server:run
+    ```
+
 ## Installation
 
 ```shell
@@ -105,4 +124,10 @@ Création d'un fichier de Fixtures :
 
 ```shell
 php bin/console make:fixtures
+```
+
+Exécuter les fichiers de Fixtures :
+
+```shell
+php bin/console doctrine:fixtures:load
 ```
