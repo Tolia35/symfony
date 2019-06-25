@@ -12,7 +12,9 @@
     <ul>
         {% for tag in article.tags %}
             <li>
-                {{ tag.label }}
+                <a href="{{ path('tag_show', {'id': tag.id}) }}">
+                    {{ tag.label }}
+                </a>
             </li>
         {% endfor %}
     </ul>
