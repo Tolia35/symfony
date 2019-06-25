@@ -9,6 +9,8 @@
     </head>
     <body>
 
+        <img src="{{ asset('build/images/logo.svg') }}" alt="Logo">
+
         <nav>
             <ul>
                 <li>
@@ -17,7 +19,15 @@
             </ul>
         </nav>
 
-        {% block body %}{% endblock %}
+        <main class="main-content">
+            <section>
+                {% block body %}{% endblock %}
+            </section>
+            <section>
+                <h2>Widgets</h2>
+                {% block sidebar %}{% endblock %}
+            </section>
+        </main>
 
         <footer>
             {{ render(controller('App\\Controller\\DefaultController::navCategory')) }}
