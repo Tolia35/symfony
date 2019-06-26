@@ -8,10 +8,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/category")
+ */
 class CategoryController extends AbstractController
 {
     /**
-     * @Route("/category/{id}", name="category_show", requirements={"id": "\d+"})
+     * @Route("/{id}", name="category_show", requirements={"id": "\d+"})
      */
     public function show(Category $category)
     {
@@ -21,7 +24,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/category/new", name="category_new")
+     * @Route("/new", name="category_new")
      */
     public function new(Request $request)
     {
@@ -46,7 +49,36 @@ class CategoryController extends AbstractController
             return $this->redirectToRoute('homepage');
         }
 
+        /** @var Category[] $categories */
+        $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
+
         return $this->render("category/new.html.twig", [
+            'form' => $form->createView(),
+            'categories' => $categories
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/edit", name="category_edit", methods={"GET", "POST"})
+     */
+    public function edit(Category $category, Request $request)
+    {
+        $form = $this->createForm(CategoryType::class, $category);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $category = $form->getData();// Récupérer les données du formulaire dans l'objet Category
+
+            // Enregister en base de données
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($category);
+            $em->flush();
+
+            return $this->redirectToRoute('category_new');
+        }
+
+        return $this->render("category/edit.html.twig", [
             'form' => $form->createView()
         ]);
     }

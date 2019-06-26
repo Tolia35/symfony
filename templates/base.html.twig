@@ -22,6 +22,8 @@
             </ul>
         </nav>
 
+        <hr>
+
         <main class="main-content">
             <section>
                 {% block body %}{% endblock %}
@@ -31,6 +33,8 @@
                 {% block sidebar %}{% endblock %}
             </section>
         </main>
+
+        <hr>
 
         <footer>
             {{ render(controller('App\\Controller\\DefaultController::navCategory')) }}
