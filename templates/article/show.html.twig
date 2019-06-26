@@ -21,10 +21,12 @@
 
     <h3>Commentaires :</h3>
 
+    {{ render(controller('App\\Controller\\CommentController::new', { 'article': article })) }}
+
     <section>
         {% for comment in comments %}
             <article>
-                <em>{{ comment.createdAt|date('d-m-Y h-i-s') }}</em>
+                <em>{{ comment.createdAt|date('d-m-Y h:i:s') }}</em>
                 <p>{{ comment.content }}</p>
             </article>
         {% endfor %}
